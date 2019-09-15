@@ -58,8 +58,6 @@ class MyWebSocketClient(cbpro.WebsocketClient):
 
             # print ('sales per trade',int(total_sells),'%','buys per trade', int(total_buys),'%')
         # except: print()
-        # (current_price, action, datetime.datetime.now().time())
-
     def buy(self):
 
         if self.euros > int(0):
