@@ -46,7 +46,7 @@ class MyWebSocketClient(cbpro.WebsocketClient):
                 self.last_actions = self.last_actions[:10]
                 if not max(self.last_trades) == self.last_trades[0]:
                     self.buy()
-                elif self.last_trades[0] > self.buying_price:
+                elif self.last_trades[0] > self.buying_price * 1.01:
                     self.sell()
             min_price = min(self.last_trades)
             max_price = max(self.last_trades)
@@ -72,7 +72,7 @@ class MyWebSocketClient(cbpro.WebsocketClient):
         if self.coins > 0 and self.last_deal == 'buy':
             self.selling_price = self.last_trades[0]
             self.euros = self.coins * self.selling_price
-            self.profit += self.last_trades[0] - self.buying_price
+            self.profit += self.coins * (self.last_trades[0] - self.buying_price)
             self.last_deal = 'sell'
             print("I sold", self.coins, "coins at", self.selling_price, "I made profit of ", self.profit)
             self.coins = 0
